@@ -12,8 +12,10 @@
   <div class="layout-container">
     <%- include('layout/sidebar') %>
 
+    <div class="main-content">
+      <h1>Tambah Produk</h1>
+
       <div class="tambah-produk-container">
-        <h2>Tambah Produk</h2>
         <form action="/produk/tambah" method="POST" enctype="multipart/form-data">
           <label for="nama">Nama Produk</label>
           <input type="text" id="nama" name="nama" required><br>
@@ -30,9 +32,10 @@
           <label for="foto">Foto</label>
           <input type="file" id="foto" name="foto" required><br>
 
-          <button type="submit">Tambah</button>
+          <button type="button">Tambah</button>
         </form>
       </div>
+    </div>
   </div>
 </body>
 

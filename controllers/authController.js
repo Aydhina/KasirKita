@@ -71,7 +71,7 @@ const authController = {
                 role: user.akun.role,
             };
 
-            if (user.akun.role === 'admin' || user.role === 'petugas') {
+            if (user.akun.role === 'admin' || user.akun.role === 'petugas') {
             res.redirect("/produk");
             } else {
                 res.redirect("/produk/pelanggan");

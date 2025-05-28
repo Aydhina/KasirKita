@@ -277,18 +277,8 @@ body.daftar-produk-body {
   padding: 40px;
   border-radius: 20px;
   width: 100%;
-  max-width: 540px;
-  margin: 60px auto;
-  box-shadow: 0 12px 30px rgba(75, 99, 130, 0.2);
-  color: #071739;
-}
 
-/* Judul */
-.tambah-produk-container h2 {
-  font-size: 24px;
-  margin-bottom: 24px;
-  font-weight: 700;
-  text-align: center;
+  box-shadow: 0 12px 30px rgba(75, 99, 130, 0.2);
   color: #071739;
 }
 
@@ -322,7 +312,7 @@ body.daftar-produk-body {
 }
 
 /* Submit Button */
-.tambah-produk-container button {
+/* .tambah-produk-container button {
   width: 100%;
   padding: 14px;
   background-color: #4B6382;
@@ -338,7 +328,7 @@ body.daftar-produk-body {
 .tambah-produk-container button:hover {
   background-color: #35516c;
   transform: translateY(-2px);
-}
+} */
 
 /* Responsive fix for layout container if sidebar collapsible */
 .sidebar.collapsed ~ .tambah-produk-container {
@@ -371,7 +361,7 @@ body.daftar-produk-body {
 /* Universal button style */
 button,
 .btn {
-  width: 100%;
+  width: 152px;
   height: 48px;
   background-color: #4B6382;
   color: white;
@@ -500,22 +490,13 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
 
 /* ===== RIWAYAT PENJUALAN ===== */
-.content-container {
+/* .content-container {
   flex: 1;
   padding: 40px;
   margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
-  background-color: #f5f7fa;
+  /* background-color: #f5f7fa;
   box-sizing: border-box;
-}
-
-/* Judul */
-.riwayat-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: #071739;
-  margin-bottom: 32px;
-  text-align: center;
-}
+} */ 
 
 /* Tombol Export */
 .button-container {
@@ -678,7 +659,7 @@ tbody td {
   text-align: center;
 }
 
-.back-button button {
+/* .back-button button {
   padding: 12px 24px;
   background-color: #4B6382;
   color: white;
@@ -692,7 +673,7 @@ tbody td {
 
 .back-button button:hover {
   background-color: #2e455f;
-}
+} */
 
 
 /* ===== RIWAYAT PENJUALAN ===== */
@@ -836,13 +817,6 @@ tbody td {
   flex-direction: column;
   gap: 30px;
   flex: 1;
-}
-
-.page-title-produk {
-  font-size: 28px;
-  font-weight: bold;
-  color: #071739;
-  text-align: center;
 }
 
 .cart-grid-produk {
@@ -994,7 +968,7 @@ tbody td {
 
 /* Tombol Export PDF dan Excel */
 .export-buttons {
-  margin-top: 20px;
+  margin-bottom: 10px;
   display: flex;
   gap: 15px;
 }
@@ -1004,10 +978,9 @@ tbody td {
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px;
   text-decoration: none;
   font-weight: 600;
   transition: background-color 0.3s ease;
@@ -1015,20 +988,24 @@ tbody td {
 
 .btn-export i {
   font-size: 16px;
-}
+} 
 
-/* Warna khusus untuk PDF (merah) dan Excel (hijau) */
-.btn-export[href*="pdf"] {
-  background-color: #4B6382;
-}
-
-.btn-export[href*="pdf"]:hover {
-  background-color: #4B6382;
-}
-
-/* Responsive pada layar kecil */
-@media (max-width: 600px) {
+Responsive pada layar kecil
+ @media (max-width: 600px) {
   .export-buttons {
     flex-direction: column;
   }
+} 
+
+.section-header {
+  display: flex;
+  justify-content: space-between; /* Jarak maksimal antar elemen */
+  align-items: center; /* Rata tengah secara vertikal */
+  margin-bottom: 20px; /* Jarak bawah dari elemen lain */
+}
+
+.section-title {
+  margin: 0; /* Hilangkan margin default jika perlu */
+  font-size: 20px;
+  font-weight: bold;
 }

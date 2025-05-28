@@ -12,14 +12,14 @@
   <div class="layout-container">
     <%- include('layout/sidebar') %>
 
-    <div class="content-container">
+    <div class="main-content">
       <h1>Riwayat Pembelian</h1>
 
       <div class="export-buttons">
-        <a href="/penjualan/pelanggan/pdf" target="_blank">
-          <button>Download PDF</button>
-        </a>
-      </div>
+          <a href="/penjualan/export/pdf" class="btn btn-export" target="_blank">
+            <i class="fas fa-file-pdf"></i> Instal PDF
+          </a>
+        </div>
 
       <% if (penjualan && penjualan.length > 0) { %>
         <% penjualan.forEach((p, index) => { %>
@@ -58,12 +58,6 @@
       <% } else { %>
         <p>Belum ada riwayat pembelian</p>
       <% } %>
-
-      <div class="back-button">
-        <a href="/produk/pelanggan">
-          <button>Kembali ke Produk</button>
-        </a>
-      </div>
     </div>
   </div>
 </body>
