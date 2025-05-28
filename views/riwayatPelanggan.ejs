@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riwayat Pembelian</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body class="detail-penjualan-body">
+  <div class="layout-container">
+    <%- include('layout/sidebar') %>
+
+    <div class="content-container">
+      <h1>Riwayat Pembelian</h1>
+
+      <div class="export-buttons">
+        <a href="/penjualan/pelanggan/pdf" target="_blank">
+          <button>Download PDF</button>
+        </a>
+      </div>
+
+      <% if (penjualan && penjualan.length > 0) { %>
+        <% penjualan.forEach((p, index) => { %>
+          <div class="pembelian-item">
+            <h2>Pembelian <%= index + 1 %> - <%= p.tanggal %></h2>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Nama Produk</th>
+                  <th>Harga</th>
+                  <th>Jumlah</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% p.detailProduk.forEach((dp, i) => { %>
+                  <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= dp.namaProduk %></td>
+                    <td>Rp<%= dp.harga.toLocaleString('id-ID') %></td>
+                    <td><%= dp.jumlah %></td>
+                    <td>Rp<%= dp.subtotal.toLocaleString('id-ID') %></td>
+                  </tr>
+                <% }) %>
+                <tr>
+                  <td colspan="4" style="text-align: right;"><strong>Total:</strong></td>
+                  <td><strong>Rp<%= p.total.toLocaleString('id-ID') %></strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <hr />
+        <% }) %>
+      <% } else { %>
+        <p>Belum ada riwayat pembelian</p>
+      <% } %>
+
+      <div class="back-button">
+        <a href="/produk/pelanggan">
+          <button>Kembali ke Produk</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

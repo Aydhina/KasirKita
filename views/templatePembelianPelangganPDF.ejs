@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: monospace;
+      padding: 20px;
+    }
+
+    .receipt {
+      border: 1px dashed #000;
+      padding: 15px;
+      width: 300px;
+      margin-bottom: 40px;
+    }
+
+    .receipt h2 {
+      text-align: center;
+      border-bottom: 1px dashed #000;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    .receipt-header, .total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .items {
+      border-top: 1px dashed #000;
+      border-bottom: 1px dashed #000;
+      margin: 10px 0;
+      padding: 10px 0;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+
+  <% penjualan.forEach((item, index) => { %>
+    <div class="receipt">
+      <h2>RECEIPT</h2>
+      <div class="receipt-header">
+        <span>Terminal #1</span>
+        <span><%= item.tanggal %></span>
+      </div>
+
+      <div class="items">
+        <% item.detailProduk.forEach((produk, i) => { %>
+          <div class="item">
+            <span><%= i + 1 %>. <%= produk.namaProduk %></span>
+            <span><%= produk.subtotal.toLocaleString('id-ID') %></span>
+          </div>
+        <% }) %>
+      </div>
+
+      <div class="total">
+        <span>Total</span>
+        <span><%= item.total.toLocaleString('id-ID') %></span>
+      </div>
+    </div>
+  <% }) %>
+
+</body>
+</html>

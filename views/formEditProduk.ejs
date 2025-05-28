@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Produk</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="edit-produk-body">
+    <div class="layout-container">
+        <%- include('layout/sidebar') %>
+
+            <div class="edit-produk-container">
+                <h2>Edit Produk</h2>
+                <form action="/produk/edit/<%= produk.id %>" method="POST" enctype="multipart/form-data">
+                    <label for="nama">Nama Produk</label>
+                    <input type="text" id="nama" name="nama" placeholder="<%= produk.nama %>"><br><br>
+
+                    <label for="deskripsi">Deskripsi</label>
+                    <input type="text" id="deskripsi" name="deskripsi" placeholder="<%= produk.deskripsi %>"><br><br>
+
+                    <label for="harga">Harga</label>
+                    <input type="text" id="harga" name="harga" placeholder="<%= produk.harga %>"><br><br>
+
+                    <label for="stok">Stok</label>
+                    <input type="number" id="stok" name="stok" placeholder="<%= produk.stok %>"><br><br>
+
+                    <label for="foto">Foto</label>
+                    <input type="file" id="foto" name="foto"><br><br>
+
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Tbd7LoM3xgMgx1lb9GqHKoJEVhKFc+8XOlHq5XBvShMZB7j8zzSldlFqzYatKRgRLQidHdqQnFb+XPm6i8w6bg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Daftar Produk</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="daftar-produk-body">
+  <div class="layout-container">
+    <%- include('layout/sidebar') %>
+
+      <div class="main-content">
+        <h1>Daftar Produk</h1>
+        <div class="cart-container">
+          <% produkList.forEach(produk=> { %>
+            <div class="cart-item">
+              <img src="/image/<%= produk.foto %>" alt="Foto Produk">
+              <div class="cart-item-info">
+                <p><strong></strong>
+                  <%= produk.nama %>
+                </p>
+                <p><strong></strong>
+                  <%= produk.deskripsi %>
+                </p>
+                <p><strong></strong>
+                  <%= produk.harga %>
+                </p>
+                <p><strong></strong>
+                  <%= produk.stok %>
+                </p>
+              </div>
+              <div class="cart-item-buttons">
+                <a href="/produk/delete/<%= produk.id %>" class="btn" title="Hapus">
+                  <i class="fas fa-trash-alt"></i>
+                </a>
+                <a href="/produk/edit/<%= produk.id %>" class="btn" title="Edit">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </div>
+
+            </div>
+            <% }); %>
+        </div>
+      </div>
+  </div>
+</body>
+
+</html>

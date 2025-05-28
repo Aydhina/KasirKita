@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <aside class="sidebar" id="sidebar">
+  <button class="toggle-btn" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <img src="/image/RAM-Logo.png" alt="Logo Kasir" class="sidebar-logo">
+  <nav>
+    <% if (user.role === 'admin' || user.role === 'petugas') { %>
+    <ul>
+      <li><a href="/produk"><i class="fas fa-box"></i><span>Daftar Produk</span></a></li>
+      <li><a href="/produk/tambah"><i class="fas fa-plus-circle"></i><span>Tambah Produk</span></a></li>
+      <li><a href="/penjualan"><i class="fas fa-receipt"></i><span>Riwayat Penjualan</span></a></li>
+    </ul>
+    <% } else if (user.role === 'pelanggan') { %>
+    <ul>
+      <li><a href="/produk/pelanggan"><i class="fas fa-user-tag"></i><span>Produk Pelanggan</span></a></li>
+      <li><a href="/penjualan/pelanggan"><i class="fas fa-history"></i><span>Riwayat Pembelian</span></a></li>
+    </ul>
+    <% } %>
+  </nav>
+  <form action="/auth/logout" method="GET" class="logout-form">
+    <button type="submit"><i class="fas fa-sign-out-alt"></i><span>Logout</span></button>
+  </form>
+</aside>
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('collapsed');
+  }
+</script>
+</body>
+</html>

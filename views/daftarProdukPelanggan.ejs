@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daftar Produk</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-Tbd7LoM3xgMgx1lb9GqHKoJEVhKFc+8XOlHq5XBvShMZB7j8zzSldlFqzYatKRgRLQidHdqQnFb+XPm6i8w6bg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="daftar-produk-body">
+  <div class="layout-container">
+    <%- include('layout/sidebar') %>
+
+      <main class="cart-container-produk">
+        <h1 class="page-title-produk">Daftar Produk</h1>
+
+        <div class="cart-grid-produk">
+          <% produkList.forEach(produk=> { %>
+            <div class="produk-card">
+              <img src="/image/<%= produk.foto %>" alt="<%= produk.nama %>" class="produk-img" />
+
+              <div class="produk-info">
+                <h3 class="produk-nama">
+                  <%= produk.nama %>
+                </h3>
+                <p class="produk-deskripsi">
+                  <%= produk.deskripsi %>
+                </p>
+                <p class="produk-stok">
+                  Stok: <%= produk.stok %>
+                </p>
+              </div>
+
+              <div class="produk-footer">
+                <span class="produk-harga">IDR <%= produk.harga.toLocaleString('id-ID') %></span>
+                <a href="/penjualan/order/<%= produk._id %>" class="btn-order" title="Order">
+                  <i class="fas fa-shopping-cart cart-icon"></i>
+                </a>
+
+              </div>
+            </div>
+
+            <% }); %>
+        </div>
+      </main>
+
+  </div>
+
+  <div id="modalConfirm" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h2>Konfirmasi Pembelian</h2>
+      <p id="modal-nama"></p>
+      <p id="modal-deskripsi"></p>
+      <p id="modal-harga"></p>
+
+      <label for="jumlah-input">Jumlah:</label>
+      <input type="number" id="jumlah-input" value="1" min="1" style="width: 60px;" />
+
+      <div class="modal-actions">
+        <button id="btnBeli">Beli</button>
+        <button id="btnCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const modal = document.getElementById('modalConfirm');
+    const btnBeli = document.getElementById('btnBeli');
+    const btnCancel = document.getElementById('btnCancel');
+    const jumlahInput = document.getElementById('jumlah-input');
+
+    let currentOrderLink = '';
+
+    document.querySelectorAll('.btn-order').forEach(button => {
+      button.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const card = this.closest('.produk-card');
+        const nama = card.querySelector('.produk-nama').textContent.trim();
+        const deskripsi = card.querySelector('.produk-deskripsi').textContent.trim();
+        const harga = card.querySelector('.produk-harga').textContent.trim();
+        currentOrderLink = this.getAttribute('href');
+
+        document.getElementById('modal-nama').textContent = `Nama: ${nama}`;
+        document.getElementById('modal-deskripsi').textContent = `Deskripsi: ${deskripsi}`;
+        document.getElementById('modal-harga').textContent = `Harga: ${harga}`;
+        jumlahInput.value = 1; // reset input jumlah
+
+        modal.style.display = 'flex';
+      });
+    });
+
+    btnBeli.addEventListener('click', () => {
+      const jumlah = jumlahInput.value;
+      if (jumlah < 1) {
+        alert("Jumlah minimal 1");
+        return;
+      }
+
+      // Redirect dengan query jumlah
+      window.location.href = `${currentOrderLink}?jumlah=${jumlah}`;
+    });
+
+    btnCancel.addEventListener('click', () => {
+      modal.style.display = 'none';
+      currentOrderLink = '';
+    });
+  </script>
+
+
+</body>
+
+</html>

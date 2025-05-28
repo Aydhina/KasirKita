@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Detail Penjualan</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div class="layout-container">
+    <%- include('layout/sidebar') %>
+
+      <div class="content-container">
+        <h2>Detail Penjualan</h2>
+
+        <div class="detail-info">
+          <p><strong>Nama Pelanggan:</strong>
+            <%= penjualan.pelanggan?.nama_pelanggan %>
+          </p>
+          <p><strong>Alamat:</strong>
+            <%= penjualan.pelanggan?.alamat %>
+          </p>
+          <p><strong>Telepon:</strong>
+            <%= penjualan.pelanggan?.telepon %>
+          </p>
+          <p><strong>Tanggal:</strong>
+            <%= penjualan.tanggal %>
+          </p>
+          <p><strong>Total Biaya:</strong> Rp<%= penjualan.total.toLocaleString('id-ID') %>
+          </p>
+        </div>
+
+        <h3>Produk yang Dibeli:</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Produk</th>
+              <th>Tanggal order</th>
+              <th>Jumlah produk</th>
+              <th>Total biaya</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% penjualan.detailProduk.forEach((produk, index)=> { %>
+              <tr>
+                <td>
+                  <%= index + 1 %>
+                </td>
+                <td>
+                  <%= produk.namaProduk %>
+                </td>
+                <td>Rp<%= produk.harga.toLocaleString('id-ID') %>
+                </td>
+                <td>
+                  <%= produk.jumlah %>
+                </td>
+                <td>Rp<%= produk.subtotal.toLocaleString('id-ID') %>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+
+        <a href="/penjualan"><button>Kembali</button></a>
+      </div>
+  </div>
+</body>
+
+</html>
